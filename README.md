@@ -250,18 +250,7 @@ Engineering students in **Semester I–IV** learning to code, especially those s
 - **Exam prep** — understand concepts through real code examples and quizzes
 - **Self-paced learners** — track progress with analytics and earn badges along the way
 
----
 
-## 📄 License
-
-MIT License — free to use, modify, and distribute for educational purposes.
-
----
-
-<div align="center">
-Built with ❤️ using Streamlit + LangChain + Mistral AI + Plotly<br>
-<em>Because every error is a lesson waiting to be learned.</em>
-</div>
 
 
 https://ai-coding-buddy-jnecfcot4tnrd8zyce4wum.streamlit.app/- The link of the app.
