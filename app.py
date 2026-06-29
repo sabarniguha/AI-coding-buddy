@@ -1,6 +1,6 @@
 # ╔══════════════════════════════════════════════════════════════════╗
 # ║          AI CODING BUDDY PRO  v4.0  — ANALYTICS EDITION         ║
-# ║   Streamlit + LangChain Core + Gemini 2.0 Flash + Plotly        ║
+# ║   Streamlit + LangChain Core + Mistral AI + Plotly              ║
 # ║   12 Tabs · Quiz · Chat · Roadmap · Diff · Convert · Analytics  ║
 # ╚══════════════════════════════════════════════════════════════════╝
 
@@ -9,7 +9,7 @@ import re, json, datetime
 from collections import Counter
 import plotly.express as px
 import plotly.graph_objects as go
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
@@ -300,11 +300,11 @@ for k, v in DEFAULTS.items():
 
 # ── LLM FACTORY ───────────────────────────────────────────────────
 def get_llm():
-    return ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash",
-        google_api_key=st.session_state.api_key,
+    return ChatMistralAI(
+        model="mistral-large-latest",
+        api_key=st.session_state.api_key,
         temperature=0.3,
-        max_output_tokens=4096,
+        max_tokens=4096,
     )
 
 _parser = StrOutputParser()
@@ -648,7 +648,7 @@ def save_history(lang, mode, code):
 
 def need_key():
     if not st.session_state.api_key:
-        st.error("🔑 Enter your Gemini API key in the sidebar first!")
+        st.error("🔑 Enter your Mistral API key in the sidebar first!")
         return True
     return False
 
@@ -683,19 +683,19 @@ with st.sidebar:
     <div class="sblogo">
       <div class="ico">🤖</div>
       <span class="nm">AI Coding Buddy Pro</span>
-      <div class="vr">v4.0 · Gemini 2.0 Flash · LangChain · Plotly</div>
+      <div class="vr">v4.0 · Mistral AI · LangChain · Plotly</div>
     </div>""", unsafe_allow_html=True)
 
-    st.markdown("#### 🔑 Gemini API Key")
-    k = st.text_input("key", type="password", placeholder="AIza…",
+    st.markdown("#### 🔑 Mistral API Key")
+    k = st.text_input("key", type="password", placeholder="Your Mistral API key…",
                       value=st.session_state.api_key, label_visibility="collapsed")
     if k:
         st.session_state.api_key = k
         st.markdown('<p style="color:#34d399;font-size:.8rem;margin-top:4px"><span class="ldot"></span>Connected — Ready</p>',
                     unsafe_allow_html=True)
     else:
-        st.warning("Paste your free Gemini key")
-        st.markdown("[Get free key →](https://aistudio.google.com)")
+        st.warning("Paste your free Mistral API key")
+        st.markdown("[Get free key →](https://console.mistral.ai/api-keys)")
 
     st.markdown("---")
     st.markdown("#### ⚙️ Settings")
@@ -767,7 +767,7 @@ st.markdown("""
     <span class="hp hp-c">⚙️ C</span>
     <span class="hp hp-cp">🔵 C++</span>
     <span class="hp hp-js">💛 JavaScript</span>
-    <span class="hp hp-ai">✨ Gemini 2.0</span>
+    <span class="hp hp-ai">✨ Mistral AI</span>
     <span class="hp hp-ai">🔗 LangChain</span>
     <span class="hp hp-ai">📊 Plotly</span>
   </div>
@@ -1715,7 +1715,7 @@ st.markdown("""
               -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
     AI Coding Buddy Pro · v4.0 — Analytics Edition
   </div>
-  Built with ❤️ using <b>Streamlit</b> · <b>LangChain Core</b> · <b>Gemini 2.0 Flash</b> · <b>Plotly</b><br>
+  Built with ❤️ using <b>Streamlit</b> · <b>LangChain Core</b> · <b>Mistral AI</b> · <b>Plotly</b><br>
   <span style="opacity:.5;margin-top:4px;display:block">
     Helping engineering students debug, learn, and level up — one error at a time.
   </span>
